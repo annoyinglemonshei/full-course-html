@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HTML Academy — Full Course</title>
+
+<style>
+/* ================================
+   1. GLOBAL STYLES
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #0b0d12;
+    --card: #121620;
+    --card2: #181d29;
+    --text: #f1f3f7;
+    --muted: #9299a8;
+    --accent: #8b7cff;
+    --accent2: #5ee7c4;
+    --border: #252b38;
+    --code: #090b10;
+}
+
+body.light {
+    --bg: #f4f5f8;
+    --card: #ffffff;
+    --card2: #f0f1f5;
+    --text: #171923;
+    --muted: #666d7b;
+    --border: #dfe2e9;
+    --code: #181a20;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: .3s;
+}
+
+/* ================================
+   2. HEADER
+================================ */
+
+header {
+    height: 70px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+header button {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ================================
+   3. HERO
+================================ */
+
+.hero {
+    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 8%;
+    background:
+        radial-gradient(circle at 80% 30%, #5f52ff22, transparent 30%),
+        radial-gradient(circle at 20% 70%, #5ee7c415, transparent 25%);
+}
+
+.badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--accent2);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 80px);
+    max-width: 850px;
+    line-height: .95;
+    margin-bottom: 25px;
+}
+
+.gradient {
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* ================================
+   4. COURSE LAYOUT
+================================ */
+
+.course {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 95px;
+    height: fit-content;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.sidebar-title {
+    padding: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 13px 18px;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+    background: var(--card2);
+    color: var(--text);
+}
+
+.progress {
+    padding: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+    );
+}
+
+/* ================================
+   5. LESSON
+================================ */
+
+.lesson {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px;
+}
+
+.lesson h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.lesson h3 {
+    margin-top: 35px;
+    margin-bottom: 12px;
+}
+
+.lesson p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.lesson ul {
+    margin: 15px 0 20px 25px;
+    color: var(--muted);
+    line-height: 2;
+}
+
+/* ================================
+   6. CODE BLOCK
+================================ */
+
+pre {
+    background: var(--code);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+code {
+    font-family: Consolas, monospace;
+    color: #d8dcff;
+    line-height: 1.6;
+}
+
+.tag {
+    color: #ff7eb6;
+}
+
+.attr {
+    color: #72e0ff;
+}
+
+.value {
+    color: #a8e063;
+}
+
+/* ================================
+   7. DEMO BOX
+================================ */
+
+.demo {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.demo h1 {
+    margin-bottom: 10px;
+}
+
+/* ================================
+   8. EDITOR
+================================ */
+
+.editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 280px;
+    resize: vertical;
+    background: var(--code);
+    color: #e7e9ff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    font-family: Consolas, monospace;
+    outline: none;
+}
+
+.preview {
+    min-height: 280px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: auto;
+}
+
+.run {
+    margin-top: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ================================
+   9. QUIZ
+================================ */
+
+.quiz {
+    margin-top: 40px;
+    padding: 25px;
+    background: var(--card2);
+    border-radius: 12px;
+}
+
+.quiz button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.quiz button:hover {
+    border-color: var(--accent);
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* ================================
+   10. FOOTER
+================================ */
+
+footer {
+    text-align: center;
+    padding: 70px 20px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ================================
+   11. MOBILE
+================================ */
+
+@media(max-width: 800px) {
+
+    .course {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .lesson {
+        padding: 25px;
+    }
+
+    .editor {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================
+     HEADER
+================================ -->
+
+<header>
+
+    <div class="logo">
+        HTML<span>Academy</span>
+    </div>
+
+    <button onclick="toggleTheme()">
+        ◐ Theme
+    </button>
+
+</header>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section class="hero">
+
+    <div class="badge">
+        COMPLETE BEGINNER COURSE
+    </div>
+
+    <h1>
+        Learn HTML.<br>
+        Build the <span class="gradient">web.</span>
+    </h1>
+
+    <p>
+        A complete beginner-friendly HTML course covering
+        structure, text, links, images, forms, semantic HTML,
+        accessibility, tables, multimedia and more.
+    </p>
+
+</section>
+
+
+<!-- ================================
+     COURSE
+================================ -->
+
+<div class="course">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            Course
+        </div>
+
+        <button class="active"
+        onclick="lesson(1,this)">
+            01 — What is HTML?
+        </button>
+
+        <button onclick="lesson(2,this)">
+            02 — HTML Structure
+        </button>
+
+        <button onclick="lesson(3,this)">
+            03 — Text & Headings
+        </button>
+
+        <button onclick="lesson(4,this)">
+            04 — Links
+        </button>
+
+        <button onclick="lesson(5,this)">
+            05 — Images
+        </button>
+
+        <button onclick="lesson(6,this)">
+            06 — Lists
+        </button>
+
+        <button onclick="lesson(7,this)">
+            07 — Tables
+        </button>
+
+        <button onclick="lesson(8,this)">
+            08 — Forms
+        </button>
+
+        <button onclick="lesson(9,this)">
+            09 — Semantic HTML
+        </button>
+
+        <button onclick="lesson(10,this)">
+            10 — Multimedia
+        </button>
+
+        <button onclick="lesson(11,this)">
+            11 — Accessibility
+        </button>
+
+        <button onclick="lesson(12,this)">
+            12 — Final Project
+        </button>
+
+        <div class="progress">
+
+            <small>
+                Progress
+                <span id="progressText">0%</span>
+            </small>
+
+            <div class="progress-bar">
+                <div
+                class="progress-fill"
+                id="progress">
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- LESSON CONTENT -->
+
+    <main class="lesson" id="lesson">
+
+        <h2>What is HTML?</h2>
+
+        <p>
+            HTML stands for
+            <strong>HyperText Markup Language</strong>.
+            It is the standard markup language used to
+            structure content on websites.
+        </p>
+
+        <p>
+            HTML is not technically a programming language.
+            Instead, it tells the browser what different
+            pieces of content are.
+        </p>
+
+        <h3>Think of a website like a house</h3>
+
+        <ul>
+            <li><strong>HTML</strong> = structure</li>
+            <li><strong>CSS</strong> = appearance</li>
+            <li><strong>JavaScript</strong> = behavior</li>
+        </ul>
+
+        <div class="demo">
+
+            <h1>Hello World!</h1>
+
+            <p>
+                This is HTML creating a heading
+                and a paragraph.
+            </p>
+
+        </div>
+
+        <h3>Your first HTML</h3>
+
+<pre><code>&lt;h1&gt;Hello World!&lt;/h1&gt;
+
+&lt;p&gt;
+    This is my first website.
+&lt;/p&gt;</code></pre>
+
+
+        <h3>Try it yourself</h3>
+
+        <div class="editor">
+
+<textarea id="editor">
+<h1>Hello, World!</h1>
+
+<p>
+I am learning HTML.
+</p>
+
+<button>
+Click me
+</button>
+</textarea>
+
+            <div
+            class="preview"
+            id="preview">
+
+                Your preview appears here.
+
+            </div>
+
+        </div>
+
+        <button
+        class="run"
+        onclick="runCode()">
+
+            Run Code →
+
+        </button>
+
+
+        <!-- QUIZ -->
+
+        <div class="quiz">
+
+            <h3>Quick Quiz</h3>
+
+            <p>
+                What does HTML stand for?
+            </p>
+
+            <button onclick="answer(false)">
+                Hyper Trainer Marking Language
+            </button>
+
+            <button onclick="answer(true)">
+                HyperText Markup Language
+            </button>
+
+            <button onclick="answer(false)">
+                HighText Machine Language
+            </button>
+
+            <div
+            class="result"
+            id="result">
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<footer>
+
+    <p>
+        HTML Academy © 2026
+    </p>
+
+    <p>
+        Learn → Build → Experiment → Repeat
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ================================
+   THEME
+================================ */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("light");
+
+}
+
+
+/* ================================
+   CODE EDITOR
+================================ */
+
+function runCode() {
+
+    const code =
+        document.getElementById("editor").value;
+
+    document.getElementById("preview").innerHTML =
+        code;
+
+}
+
+
+/* ================================
+   QUIZ
+================================ */
+
+function answer(correct) {
+
+    const result =
+        document.getElementById("result");
+
+    if (correct) {
+
+        result.innerText =
+            "✓ Correct! HTML means HyperText Markup Language.";
+
+        result.style.color =
+            "var(--accent2)";
+
+    } else {
+
+        result.innerText =
+            "✕ Not quite. Try again.";
+
+        result.style.color =
+            "#ff7eb6";
+
+    }
+
+}
+
+
+/* ================================
+   LESSON SYSTEM
+================================ */
+
+const lessons = {
+
+1: {
+title: "What is HTML?",
+content: `
+<p>
+HTML stands for <strong>HyperText Markup Language</strong>.
+It gives a webpage its structure.
+</p>
+
+<h3>HTML vs CSS vs JavaScript</h3>
+
+<ul>
+<li>HTML → structure</li>
+<li>CSS → design</li>
+<li>JavaScript → interaction</li>
+</ul>
+
+<pre><code>&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;Welcome to my website.&lt;/p&gt;</code></pre>
+`
+},
+
+2: {
+title: "HTML Structure",
+content: `
+<p>
+Every normal HTML document has a basic structure.
+</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<h3>Important parts</h3>
+
+<ul>
+<li>DOCTYPE tells the browser this is HTML5.</li>
+<li>head contains information about the page.</li>
+<li>body contains visible content.</li>
+</ul>
+`
+},
+
+3: {
+title: "Text & Headings",
+content: `
+<p>
+HTML provides different elements for text.
+</p>
+
+<pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Smaller Heading&lt;/h3&gt;
+
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;strong&gt;Important text&lt;/strong&gt;
+
+&lt;em&gt;Emphasized text&lt;/em&gt;</code></pre>
+
+<p>
+Use headings in a logical hierarchy rather than
+choosing them only because of their size.
+</p>
+`
+},
+
+4: {
+title: "Links",
+content: `
+<p>
+Links allow users to move between pages or websites.
+</p>
+
+<pre><code>&lt;a href="https://example.com"&gt;
+Visit Example
+&lt;/a&gt;</code></pre>
+
+<h3>Open in a new tab</h3>
+
+<pre><code>&lt;a
+href="https://example.com"
+target="_blank"&gt;
+
+Open Website
+
+&lt;/a&gt;</code></pre>
+`
+},
+
+5: {
+title: "Images",
+content: `
+<p>
+Images use the <strong>img</strong> element.
+</p>
+
+<pre><code>&lt;img
+src="cat.jpg"
+alt="A sleeping cat"&gt;</code></pre>
+
+<p>
+The <strong>alt</strong> attribute describes the image
+for accessibility and when the image cannot load.
+</p>
+`
+},
+
+6: {
+title: "Lists",
+content: `
+<p>
+HTML has ordered and unordered lists.
+</p>
+
+<h3>Unordered</h3>
+
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<h3>Ordered</h3>
+
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;Learn HTML&lt;/li&gt;
+    &lt;li&gt;Learn CSS&lt;/li&gt;
+    &lt;li&gt;Build a website&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+`
+},
+
+7: {
+title: "Tables",
+content: `
+<p>
+Tables organize information into rows and columns.
+</p>
+
+<pre><code>&lt;table&gt;
+
+&lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td&gt;Alex&lt;/td&gt;
+    &lt;td&gt;15&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<p>
+Use tables for tabular data, not for designing
+the layout of an entire webpage.
+</p>
+`
+},
+
+8: {
+title: "Forms",
+content: `
+<p>
+Forms allow users to enter and submit information.
+</p>
+
+<pre><code>&lt;form&gt;
+
+&lt;label&gt;
+Name:
+&lt;/label&gt;
+
+&lt;input
+type="text"
+placeholder="Enter your name"&gt;
+
+&lt;button type="submit"&gt;
+Submit
+&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<h3>Common input types</h3>
+
+<ul>
+<li>text</li>
+<li>email</li>
+<li>password</li>
+<li>number</li>
+<li>date</li>
+<li>checkbox</li>
+<li>radio</li>
+</ul>
+`
+},
+
+9: {
+title: "Semantic HTML",
+content: `
+<p>
+Semantic HTML uses elements that describe the purpose
+of their content.
+</p>
+
+<pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;article&gt;
+        Article content
+    &lt;/article&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+<p>
+Semantic elements make websites easier to understand
+for developers, browsers and assistive technologies.
+</p>
+`
+},
+
+10: {
+title: "Multimedia",
+content: `
+<p>
+HTML can display audio and video.
+</p>
+
+<h3>Video</h3>
+
+<pre><code>&lt;video controls&gt;
+    &lt;source
+    src="video.mp4"
+    type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+<h3>Audio</h3>
+
+<pre><code>&lt;audio controls&gt;
+    &lt;source
+    src="music.mp3"
+    type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+`
+},
+
+11: {
+title: "Accessibility",
+content: `
+<p>
+Good HTML should be usable by as many people as possible.
+</p>
+
+<h3>Important habits</h3>
+
+<ul>
+<li>Use meaningful headings.</li>
+<li>Add alt text to meaningful images.</li>
+<li>Use labels with form inputs.</li>
+<li>Use buttons for actions.</li>
+<li>Use links for navigation.</li>
+<li>Don't rely only on color to communicate information.</li>
+</ul>
+
+<pre><code>&lt;label for="email"&gt;
+Email
+&lt;/label&gt;
+
+&lt;input
+id="email"
+type="email"&gt;</code></pre>
+`
+},
+
+12: {
+title: "Final Project",
+content: `
+<p>
+Now combine everything you've learned.
+Create a personal portfolio website.
+</p>
+
+<h3>Your website should contain:</h3>
+
+<ul>
+<li>Header</li>
+<li>Navigation</li>
+<li>About section</li>
+<li>Skills list</li>
+<li>Projects</li>
+<li>Image</li>
+<li>Contact form</li>
+<li>Footer</li>
+</ul>
+
+<h3>Starter structure</h3>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+&lt;title&gt;
+My Portfolio
+&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;header&gt;
+My Portfolio
+&lt;/header&gt;
+
+&lt;nav&gt;
+Home | About | Projects
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+&lt;section&gt;
+
+&lt;h1&gt;
+Hello, I'm Alex
+&lt;/h1&gt;
+
+&lt;p&gt;
+Welcome to my portfolio.
+&lt;/p&gt;
+
+&lt;/section&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+2026 My Portfolio
+&lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<h3>Challenge</h3>
+
+<p>
+Build your own version without copying the design
+of this course. Change the text, layout and style.
+</p>
+`
+}
+
+};
+
+
+/* ================================
+   LOAD LESSON
+================================ */
+
+let currentLesson = 1;
+
+function lesson(number, button) {
+
+    currentLesson = number;
+
+    const data = lessons[number];
+
+    document.getElementById("lesson").innerHTML = `
+
+        <h2>${data.title}</h2>
+
+        ${data.content}
+
+        <div class="quiz">
+
+            <h3>Lesson Complete?</h3>
+
+            <p>
+                Mark this lesson as completed when
+                you understand the topic.
+            </p>
+
+            <button onclick="completeLesson()">
+                ✓ Mark as Complete
+            </button>
+
+        </div>
+    `;
+
+    document
+        .querySelectorAll(".sidebar button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+}
+
+
+/* ================================
+   PROGRESS
+================================ */
+
+let completed = [];
+
+function completeLesson() {
+
+    if (!completed.includes(currentLesson)) {
+
+        completed.push(currentLesson);
+
+    }
+
+    const percentage =
+        Math.round(
+            completed.length / 12 * 100
+        );
+
+    document.getElementById("progress").style.width =
+        percentage + "%";
+
+    document.getElementById("progressText").innerText =
+        percentage + "%";
+
+    alert(
+        "Lesson completed! Keep going."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
